@@ -1,0 +1,34 @@
+<html>
+<body>
+
+Hello, {{loginName}}! </br>
+
+<form action="/logout" method="post">
+    <button type="submit">Logout</button>
+</form>
+
+<form action="/create-film-input" method="post">
+    <input type="hidden" value="{{id}}" name="filmId"/>
+    <input type="text" placeholder="Film Title" name="enterTitle"/>
+    <input type="text" placeholder="Film Director" name="enterDirector"/>
+    <input type="text" placeholder="Year" name="enterYear"/>
+    <input type="text" placeholder="Genre" name="enterGenre"/>
+    <input type="text" placeholder="Seen?" name="enterSeen"/>
+</form>
+
+<br>
+
+
+</br>
+
+<ol>
+    {{#films}}
+    <li>
+        Title: {{title}}  director: {{director}} Year: {{year}} Genre: {{genre}} Seen: {{seen}}
+        <form action="delete-film" method="post"><input type="hidden" value="{{filmId}}" name="deleteFilmId"><button> Delete </button> </form> <a href="/edit-film-input?filmId={{filmId}}"> Edit </a>...<br>
+    </li>
+    {{/films}}
+</ol>
+
+</body>
+</html>
